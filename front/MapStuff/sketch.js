@@ -5,7 +5,7 @@ var zoom = 1;
 var clon = 0;
 var clat = 0;
 var ww = screen.width;
-var hh = screen.height;
+var hh = screen.height -200;
 
 let data = [];
 let fires = [];
