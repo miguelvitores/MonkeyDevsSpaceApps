@@ -20,6 +20,7 @@
     height: 75px;
     padding-top: 2px;
     text-align: center;
+    z-index:999;
 }
 
 .cabecera img {
@@ -40,23 +41,25 @@
     min-height: 500px;
     min-width: 500px;
 }
+.mapContainer{
+  position: absolute;
+  width: 50%;
+  height: 80%;
+  margin-top: 10%;
+  overflow: hidden;
+}
+#map{
+  position:absolute;
+  z-index: 0 !important;
+}
 .mapa {
-    position: absolute;
-    background-color: blue;
-    z-index: 0;
-    width: auto;
-    height: auto;
+    position: absolute !important;
+    z-index: 0 !important;
     object-fit: contain;
+    margin-top: 50px;
 
 }
-.mapa img{
-    width: auto;
-    height: auto;
 
-    padding: 0;
-    margin: 0;
-
-}
 .opciones {
     background-color: yellow;
     position: fixed;
@@ -65,6 +68,7 @@
     margin-right: 20px;
     margin-top: 250px;
     text-align: center;
+    z-index: 999 !important;
 }
 
 .mapa_global{
@@ -77,6 +81,7 @@
     position: fixed;
     margin-right: 95px;
     margin-top: 50px;
+    z-index: 999;
 }
 
 .sos: hover{
