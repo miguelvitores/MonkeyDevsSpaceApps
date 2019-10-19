@@ -1,0 +1,168 @@
+.cuerpo {
+    width: auto;
+}
+
+.cabecera {
+    background-color: yellowgreen;
+    width: 100%;
+    height: 75px;
+    padding-top: 2px;
+    text-align: center;
+}
+
+.cabecera img {
+    width: 60px;
+    float: left;
+    margin-left: 15px;
+    margin-top: 7px;
+}
+
+.cabecera h2 {
+    padding-left: 200px;
+}
+
+.contenedor{
+    min-height: 500px;
+    min-width: 500px;
+}
+.mapa {
+    position: absolute;
+    background-color: aquamarine;
+    z-index: 0;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+
+}
+.mapa img{
+    width: auto;
+    height: auto;
+    
+    padding: 0;
+    margin: 0;
+    
+}
+.opciones {
+    background-color: yellow;
+    position: fixed;
+    width: 250px;
+    right: 0;
+    margin-right: 20px;
+    margin-top: 17%;
+    text-align: center;
+}
+
+.mapa_global{
+    margin-bottom: 10%;
+    font-size: 20px;
+}
+
+.sos {
+    right: 0;
+    position: fixed;
+    margin-right: 95px;
+    margin-top: 50px;
+}
+
+.sos input {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+    border-style: none;
+}
+
+.coordenadas {
+    margin-bottom: 20%;
+}
+
+.coordenadas input {
+    margin: 3px;
+}
+
+
+/* CODIGO POPUP*/
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 20%;
+    right: 0;
+    position: fixed;
+    margin-right: 130px;
+    margin-top: 40%;
+}
+
+.popup .popuptext {
+    visibility: hidden;
+    width: 290px;
+    background-color: #555;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 6px;
+    position: absolute;
+    bottom: 140%;
+    left: -60%;
+    margin-left: -80px;
+}
+
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+@media (width = 750px){
+    
+    div{
+        border: solid 1px red;
+    }
+    
+}
+
+/* FIN POPUP */
+
+.cuerpo2 {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.cuerpo2 img{
+    margin-left: 10px;
+}
+
