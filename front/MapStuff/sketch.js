@@ -5,7 +5,7 @@ var zoom = 1;
 var clon = 0;
 var clat = 0;
 var ww = 900;
-var hh = 600;
+var hh = 500;
 
 let data = [];
 let fires = [];
@@ -47,7 +47,9 @@ const options = {
   zoom: 2,
   studio: true, // false to use non studio styles
   //style: 'mapbox.dark' //streets, outdoors, light, dark, satellite (for nonstudio)
-  style: 'mapbox://styles/gza1/ck1xekbhg0jvy1cp1a3gtlhm7',
+  //style: 'mapbox://styles/gza1/ck1xekbhg0jvy1cp1a3gtlhm7',
+  style: 'mapbox://styles/mapbox/satellite-v9',
+
 };
 const mappa = new Mappa('Mapbox', key);
 let myMap;
