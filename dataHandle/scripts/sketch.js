@@ -3,8 +3,10 @@ var mapimg;
 var zoom = 1;
 var clon = 0;
 var clat = 0;
-var ww = 1024;
-var hh = 512;
+//var ww = 1024;
+var ww = 1920;
+//var hh = 512;
+var hh = 1080;
 
 let data = [];
 let fires = [];
@@ -42,7 +44,7 @@ $( function() {
 //        myMap.overlay(canvas);
 
         myMap.onChange(drawFires);
-        console.log(fires); 
+//        console.log(fires.length); 
     });
     
     
@@ -110,7 +112,9 @@ function preload(){
     for(let i=slidermin; i<=slidermax; i++){
         data[i] = [];
 //        data[i] = loadStrings('data/FIRMS/viirs/Global/VIIRS_I_Global_VNP14IMGTDL_NRT_2019'+i+'.txt');
-        data[i] = loadStrings('data/FIRMS/viirs/Europe/VIIRS_I_Europe_VNP14IMGTDL_NRT_2019'+i+'.txt');
+//        data[i] = loadStrings('data/FIRMS/viirs/Europe/VIIRS_I_Europe_VNP14IMGTDL_NRT_2019'+i+'.txt');
+//        data[i] = loadStrings('data/FIRMS/c6/Europe/MODIS_C6_Europe_MCD14DL_NRT_2019'+i+'.txt');
+        data[i] = loadStrings('data/FIRMS/c6/Global/MODIS_C6_Global_MCD14DL_NRT_2019'+i+'.txt');
 //        console.log(data[i]);
     }
 }
