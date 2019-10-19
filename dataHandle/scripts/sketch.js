@@ -109,8 +109,9 @@ function preload(){
     console.log("slidermax: "+slidermax);
     for(let i=slidermin; i<=slidermax; i++){
         data[i] = [];
+//        data[i] = loadStrings('data/FIRMS/viirs/Global/VIIRS_I_Global_VNP14IMGTDL_NRT_2019'+i+'.txt');
         data[i] = loadStrings('data/FIRMS/viirs/Europe/VIIRS_I_Europe_VNP14IMGTDL_NRT_2019'+i+'.txt');
-        console.log(data[i]);
+//        console.log(data[i]);
     }
 }
 
@@ -129,14 +130,14 @@ function setup(){
   //var cx = mercX(clon);
   //var cy = mercY(clat);
 
-  console.log(fires); 
+//  console.log(fires); 
   
   myMap.onChange(drawFires);
   
 }
 function draw(){
 //    stroke(255, 0, 0);
-//    ellipse(mouseX, mouseY, 5);
+//    ellipse(pmouseX, pmouseY, 5);
 }
 
 function drawFires(){
@@ -155,9 +156,9 @@ function drawFires(){
           let coefBrillo = ((maxBright-minBright) * brightness) / (minBright/maxBright);
           let brillo = abs( log( pow(coefBrillo, exp(1)) ) );
           let coefVerde = (brightness-minBright) / (maxBright-minBright);            
-          console.log(coefVerde);
+//          console.log(coefVerde);
         fill(255, 255*coefVerde, 0, brillo);
-        stroke(255,255*coefVerde,0, brillo);
+        stroke(255, 255*coefVerde,0, brillo);
           let coefZoom = pow(exp( - myMap.getZoom()/3 ), -1);
         ellipse(pos.x, pos.y, coefZoom, coefZoom);
         
