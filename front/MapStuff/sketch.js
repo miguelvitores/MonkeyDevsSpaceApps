@@ -4,8 +4,8 @@ var mapimg;
 var zoom = 1;
 var clon = 0;
 var clat = 0;
-var ww = 900;
-var hh = 500;
+var ww = screen.width;
+var hh = screen.height;
 
 let data = [];
 let fires = [];
