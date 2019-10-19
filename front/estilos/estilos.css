@@ -1,9 +1,21 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
 .cuerpo {
     width: auto;
+    height: auto;
 }
 
 .cabecera {
-    background-color: yellowgreen;
+    background: rgba(173,0,40,1);
+    background: -moz-linear-gradient(top, rgba(173,0,40,1) 0%, rgba(143,0,33,1) 44%, rgba(107,0,25,1) 88%, rgba(107,0,25,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(173,0,40,1)), color-stop(44%, rgba(143,0,33,1)), color-stop(88%, rgba(107,0,25,1)), color-stop(100%, rgba(107,0,25,1)));
+    background: -webkit-linear-gradient(top, rgba(173,0,40,1) 0%, rgba(143,0,33,1) 44%, rgba(107,0,25,1) 88%, rgba(107,0,25,1) 100%);
+    background: -o-linear-gradient(top, rgba(173,0,40,1) 0%, rgba(143,0,33,1) 44%, rgba(107,0,25,1) 88%, rgba(107,0,25,1) 100%);
+    background: -ms-linear-gradient(top, rgba(173,0,40,1) 0%, rgba(143,0,33,1) 44%, rgba(107,0,25,1) 88%, rgba(107,0,25,1) 100%);
+    background: linear-gradient(to bottom, rgba(173,0,40,1) 0%, rgba(143,0,33,1) 44%, rgba(107,0,25,1) 88%, rgba(107,0,25,1) 100%);
     width: 100%;
     height: 75px;
     padding-top: 2px;
@@ -18,7 +30,10 @@
 }
 
 .cabecera h2 {
-    padding-left: 200px;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 40px;
+    color: #FFFF;
 }
 
 .contenedor{
@@ -27,7 +42,7 @@
 }
 .mapa {
     position: absolute;
-    background-color: aquamarine;
+    background-color: blue;
     z-index: 0;
     width: auto;
     height: auto;
@@ -37,10 +52,10 @@
 .mapa img{
     width: auto;
     height: auto;
-    
+
     padding: 0;
     margin: 0;
-    
+
 }
 .opciones {
     background-color: yellow;
@@ -48,7 +63,7 @@
     width: 250px;
     right: 0;
     margin-right: 20px;
-    margin-top: 17%;
+    margin-top: 250px;
     text-align: center;
 }
 
@@ -64,12 +79,21 @@
     margin-top: 50px;
 }
 
+.sos: hover{
+  background-color: rgba(115, 0, 25, 0.5);
+  border-radius: 50%;
+  color: white;
+  border-color: rgba(115, 0, 25, 0.5);
+}
 .sos input {
     width: 100px;
     height: 100px;
-    background-color: red;
+    background-color: #bd0404;
     border-radius: 50%;
-    border-style: none;
+    color: white;
+    border-color: #bd0404;
+    font-size: 18px;
+    font-weight: 800;
 }
 
 .coordenadas {
@@ -77,7 +101,7 @@
 }
 
 .coordenadas input {
-    margin: 3px;
+    margin: 5px;
 }
 
 
@@ -123,11 +147,15 @@
     animation: fadeIn 1s
 }
 
+.popup .li{
+  padding-top: 5px
+  padding-bottom: 5px;
+}
+
 @-webkit-keyframes fadeIn {
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
@@ -137,7 +165,6 @@
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
@@ -148,11 +175,11 @@ li {
 }
 
 @media (width = 750px){
-    
+
     div{
         border: solid 1px red;
     }
-    
+
 }
 
 /* FIN POPUP */
@@ -165,4 +192,3 @@ li {
 .cuerpo2 img{
     margin-left: 10px;
 }
-
