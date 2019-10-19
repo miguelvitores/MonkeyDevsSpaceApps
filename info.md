@@ -5,5 +5,3 @@
 [Documentación p5.js](https://p5js.org/reference/)
 
 [Ejemplos p5.js](https://p5js.org/examples/)
-
-[Resumen importante p5.js](https://es.pornhub.com/)
