@@ -13,6 +13,9 @@ var slidervalue;
 var slidermax;
 var slidermin;
 
+var maxBright = 0;
+var minBright = 1000;
+
 const key = 'pk.eyJ1IjoiZ3phMSIsImEiOiJjazF2eHIzNGcwODloM2xwMDY2ZWVqM3B1In0.wqodM5D8x7BiwFVUQxvdig';
 
 $( function() {
@@ -39,8 +42,6 @@ $( function() {
 //        myMap.overlay(canvas);
 
         myMap.onChange(drawFires);
-        fill(255, 0, 0);
-        stroke(255,0,0);
         console.log(fires); 
     });
     
@@ -131,8 +132,6 @@ function setup(){
   console.log(fires); 
   
   myMap.onChange(drawFires);
-  fill(255, 0, 0);
-  stroke(255,0,0);
   
 }
 function draw(){
@@ -149,10 +148,18 @@ function drawFires(){
     for(let i = 0; i<fires.length; i++){
       const latitudeX = Number(fires[i].latitude);
       const longitudeX = Number(fires[i].longitude);
+        const brightness = Number(fires[i].brightTi4);
 
       if (myMap.map.getBounds().contains([latitudeX, longitudeX])) {
-        const pos = myMap.latLngToPixel(latitudeX, longitudeX);        
-        ellipse(pos.x, pos.y, 2, 2);
+        const pos = myMap.latLngToPixel(latitudeX, longitudeX);
+          let coefBrillo = ((maxBright-minBright) * brightness) / (minBright/maxBright);
+          let brillo = abs( log( pow(coefBrillo, exp(1)) ) );
+          let coefVerde = (brightness-minBright) / (maxBright-minBright);            
+          console.log(coefVerde);
+        fill(255, 255*coefVerde, 0, brillo);
+        stroke(255,255*coefVerde,0, brillo);
+          let coefZoom = pow(exp( - myMap.getZoom()/3 ), -1);
+        ellipse(pos.x, pos.y, coefZoom, coefZoom);
         
       }
     }
@@ -165,22 +172,29 @@ function loadData() {
     fires = [];
     console.log("slidervalue");
     console.log(slidervalue);
+    maxBright = 0;
+    minBright = 1000;
     for(let i = 1; i < data[slidervalue].length-1; i++) {
         let line = split(data[slidervalue][i], ",");
 
-          let latitude = line[0];
-          let longitude = line[1];
-          let brightTi4 = line[2];
-          let scan = line[3];
-          let track = line[4];
-          let acqDate = line[5];
-          let acqTime = line[6];
-          let satellite = line[7];
-          let confidence = line[8];
-          let version = line[9];
-          let brigthTi5 = line[10];
-          let frp = line[11];
-          let daynight = line[12];
+        let latitude = line[0];
+        let longitude = line[1];
+        let brightTi4 = line[2];
+        let scan = line[3];
+        let track = line[4];
+        let acqDate = line[5];
+        let acqTime = line[6];
+        let satellite = line[7];
+        let confidence = line[8];
+        let version = line[9];
+        let brigthTi5 = line[10];
+        let frp = line[11];
+        let daynight = line[12];
+        
+        maxBright = max(maxBright, brightTi4);
+        minBright = min(minBright, brightTi4);
+
+        
 
           fires.push(new Fire(latitude, longitude, brightTi4, scan, track, acqDate, acqDate, acqTime, satellite, confidence, version, brigthTi5, frp, daynight));
       }
