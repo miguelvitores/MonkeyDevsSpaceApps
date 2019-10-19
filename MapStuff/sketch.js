@@ -58,24 +58,21 @@ function preload(){
   
   data = loadStrings('VIIRS_I_Europe_VNP14IMGTDL_NRT_2019232.txt');
 
-
+  
  
 }
 function setup(){
-  //   createCanvas(ww, hh);
-  // translate(width / 2, height / 2);
-  // imageMode(CENTER);
-  // image(mapimg, 0, 0);
+  loadData();
+  console.log(fires); 
   canvas = createCanvas(ww, hh);
 
-  // Create a tile map and overlay the canvas on top.
+ 
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas);
   //var cx = mercX(clon);
   //var cy = mercY(clat);
 
-  loadData();
-  console.log(fires); 
+
   
   myMap.onChange(drawFires);
   fill(255, 0, 0);
@@ -87,21 +84,24 @@ function draw(){
 }
 
 function drawFires(){
+    
+  
     clear();
 
    
   
   //if (myMap.map.getBounds().contains([latitudeX, longitudeX])) {
-    for(let i = 0; i<=fires.length; i++){
+    for(let i = 0; i < fires.length-1; i++){
 
 
-      console.log('Hola');
+      
       const latitudeX = Number(fires[i].latitude);
       const longitudeX = Number(fires[i].longitude);
+      
 
       if (myMap.map.getBounds().contains([latitudeX, longitudeX])) {
         const pos = myMap.latLngToPixel(latitudeX, longitudeX);        
-        ellipse(pos.x, pos.y, 2, 2);
+        ellipse(pos.x, pos.y, 3, 3);
         
       }
     }
