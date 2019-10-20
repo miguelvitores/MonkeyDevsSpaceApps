@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title> MonkeyOnFire </title>
+  <link rel="shortcut icon" type="image/x-icon" href="#">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../estilos/estilos.css">
+  <script>
+    // When the user clicks on <div>, open the popup
+    function popup() {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+    }
+  </script>
+  <script src="../MapStuff/p5/p5.js"></script>
+
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+
+  <script src="../MapStuff/mappa.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <div class="cuerpo">
+    <!-- CABECERA, TITULO Y ICONO-->
+    <div class="cabecera">
+      <img src="../imagenes/icono.png" title="MonkeyOnFire" />
+      <h2>MonkeyOnFire</h2>
+
+    </div>
+    <!-- EL MAPA -->
+
+    <div id='map'></div>
+    <script type="text/javascript" src="../MapStuff/sketch.js"></script>
+
+
+
+
+    <div class="sos">
+      <input type="button" value="S.O.S" href="#">
+
+    </div>
+
+    <!-- LAS OPCIONES DE LA DERECHA, EL SOS Y DEMAS CAJAS -->
+    <div class="opciones">
+
+      <div class="coordenadas">
+        <h3>Tus coordenadas</h3>
+        <form>
+          <input type="text" placeholder="Latitud" id="input">
+          <input type="text" placeholder="Longitud" id="input">
+          <br />
+          <input type="button" value="Ver incendios">
+
+        </form>
+
+
+      </div>
+
+      <div class="mapa_global">
+
+        <a target="_blank" href="https://firms.modaps.eosdis.nasa.gov/map/#z:3;c:0.0,0.0;d:2019-10-18..2019-10-19">Mapa Global</a>
+
+      </div class="comentarios">
+
+      <a target="_blank" href="comentarios.html"><input type="button" value="comentarios"></a>
+
+
+    </div>
+
+  </div>
+  <div class="popup" onclick="popup()">
+    <img src="../imagenes/info.png" title="info" width="60px" />
+    <span class="popuptext" id="myPopup">
+
+      <ol>
+        <li>Avise a los bomberos.</li>
+        <li>Mantener la tranquilidad.</li>
+        <li>Evitar inhalar el humo.</li>
+        <li>Hacer caso a las autoridades.</li>
+        <li>Ir en direccion contraria al viento.</li>
+        <li><a target="_blank" href="mas_consejos.html">Para mas informacion pincha aqui</a></li>
+      </ol>
+    </span>
+
+  </div>
+
+  </div>
+  <div class="footer">
+    <p class="copyright"> Open source copyright </p>
+  </div>
+</body>

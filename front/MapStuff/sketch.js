@@ -4,8 +4,9 @@ var mapimg;
 var zoom = 1;
 var clon = 0;
 var clat = 0;
-var ww = 1024;
-var hh = 512;
+var ww = screen.width;
+var hh = screen.height -200;
+var coords = [];
 
 let data = [];
 let fires = [];
@@ -28,81 +29,95 @@ class Fire {
     this.frp = frp;
     this.daynight = daynight;
   }
-
   display() {
        stroke(0);
        strokeWeight(0.8);
        noFill();
        ellipse(this.longitud, this.latitud);
-       
   }
-
-
 }
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+function showPosition(position) {
+  console.log(position.coords.latitude);
+  console.log(position.coords.longitude);
+}
+
+
+
 
 // Options for map
 const options = {
-  lat: 30.846218,
+
+  lat:30,
   lng:  0,
-  zoom: 2,
+  zoom: 4,
   studio: true, // false to use non studio styles
   //style: 'mapbox.dark' //streets, outdoors, light, dark, satellite (for nonstudio)
-  style: 'mapbox://styles/gza1/ck1xekbhg0jvy1cp1a3gtlhm7',
+  //style: 'mapbox://styles/gza1/ck1xekbhg0jvy1cp1a3gtlhm7',
+  style: 'mapbox://styles/mapbox/satellite-v9',
+
 };
+getLocation();
+
 const mappa = new Mappa('Mapbox', key);
 let myMap;
 
 let canvas;
 
 function preload(){
-  
-  data = loadStrings('VIIRS_I_Europe_VNP14IMGTDL_NRT_2019232.txt');
 
-  
- 
+  data = loadStrings('../MapStuff/VIIRS_I_Europe_VNP14IMGTDL_NRT_2019232.txt');
+
 }
 function setup(){
+
   loadData();
-  console.log(fires); 
+  console.log(fires);
   canvas = createCanvas(ww, hh);
 
- 
+
   myMap = mappa.tileMap(options);
   myMap.overlay(canvas);
   //var cx = mercX(clon);
   //var cy = mercY(clat);
 
 
-  
+
   myMap.onChange(drawFires);
   fill(255, 0, 0);
   stroke(255,0,0);
-  
+
 }
 function draw(){
-  
+
 }
 
 function drawFires(){
-    
-  
+
+
     clear();
 
-   
-  
+
+
   //if (myMap.map.getBounds().contains([latitudeX, longitudeX])) {
     for(let i = 0; i < fires.length-1; i++){
 
 
-      
+
       const latitudeX = Number(fires[i].latitude);
       const longitudeX = Number(fires[i].longitude);
-      
+
 
       if (myMap.map.getBounds().contains([latitudeX, longitudeX])) {
-        const pos = myMap.latLngToPixel(latitudeX, longitudeX);        
+        const pos = myMap.latLngToPixel(latitudeX, longitudeX);
         ellipse(pos.x, pos.y, 3, 3);
-        
+
       }
     }
 
@@ -131,5 +146,5 @@ function loadData() {
 
           fires.push(new Fire(latitude, longitude, brightTi4, scan, track, acqDate, acqDate, acqTime, satellite, confidence, version, brigthTi5, frp, daynight));
       }
-  
+
 }
