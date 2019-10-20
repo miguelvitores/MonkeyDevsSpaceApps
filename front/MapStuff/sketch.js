@@ -118,7 +118,9 @@ function showError(error){
     studio: true, // false to use non studio styles
     //style: 'mapbox.dark' //streets, outdoors, light, dark, satellite (for nonstudio)
     //style: 'mapbox://styles/gza1/ck1xekbhg0jvy1cp1a3gtlhm7',
-    style: 'mapbox://styles/mapbox/satellite-v9',
+//    style: 'mapbox://styles/mapbox/satellite-v9',
+//    style: 'mapbox://styles/mapbox/streets-v9',
+    style: 'mapbox://styles/mapbox/dark-v9',
 
   };
 }
@@ -130,11 +132,14 @@ function showPosition(position) {
     lng:  position.coords.longitude,
     zoom: 8,
     studio: true, // false to use non studio styles
-    //style: 'mapbox.dark' //streets, outdoors, light, dark, satellite (for nonstudio)
+//    style: 'mapbox.dark' //streets, outdoors, light, dark, satellite (for nonstudio)
     //style: 'mapbox://styles/gza1/ck1xekbhg0jvy1cp1a3gtlhm7',
-    style: 'mapbox://styles/mapbox/satellite-v9',
+//    style: 'mapbox://styles/mapbox/satellite-v9',
+//    style: 'mapbox://styles/mapbox/streets-v9',
+    style: 'mapbox://styles/mapbox/dark-v9',
 
   };
+    
 }
 
 getLocation();
@@ -149,10 +154,10 @@ function preload(){
     console.log("slidermax: "+slidermax);
     for(let i=slidermin; i<=slidermax; i++){
         data[i] = [];
-//        data[i] = loadStrings('../MapStuff/data/FIRMS/viirs/Global/VIIRS_I_Global_VNP14IMGTDL_NRT_2019'+i+'.txt');
+        data[i] = loadStrings('../MapStuff/data/FIRMS/viirs/Global/VIIRS_I_Global_VNP14IMGTDL_NRT_2019'+i+'.txt');
 //        data[i] = loadStrings('../MapStuff/data/FIRMS/viirs/Europe/VIIRS_I_Europe_VNP14IMGTDL_NRT_2019'+i+'.txt');
 //        data[i] = loadStrings('../MapStuff/data/FIRMS/c6/Europe/MODIS_C6_Europe_MCD14DL_NRT_2019'+i+'.txt');
-        data[i] = loadStrings('../MapStuff/data/FIRMS/c6/Global/MODIS_C6_Global_MCD14DL_NRT_2019'+i+'.txt');
+//        data[i] = loadStrings('../MapStuff/data/FIRMS/c6/Global/MODIS_C6_Global_MCD14DL_NRT_2019'+i+'.txt');
 //        console.log(data[i]);
     }
 }

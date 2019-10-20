@@ -51,7 +51,7 @@
     <div class="opciones">
 
       <div class="coordenadas">
-        <h3>Tus coordenadas</h3>
+        <h3>Coordenadas</h3>
         <form>
           <input type="text" placeholder="Latitud" id="input">
           <input type="text" placeholder="Longitud" id="input">
