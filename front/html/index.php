@@ -64,7 +64,7 @@
       </div>
 
         
-      <a target="_blank" href="hilos.php">
+      <a href="hilos.php">
           <div id="foro-link">Foro</div>
         </a>
 

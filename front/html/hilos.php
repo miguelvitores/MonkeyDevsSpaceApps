@@ -42,7 +42,7 @@
                 <?php foreach($hilos as $h):   ?>
               
                     <div class="gradient-box">
-                        <a href="comentarios.php?id=<?php echo $h['idHilo']; ?>" target="_blank">
+                        <a href="comentarios.php?id=<?php echo $h['idHilo']; ?>">
                         <p class="hilo">
                             <span id="titulo-hilo"><?php echo $h['titulo'] ?></span>
                             -
