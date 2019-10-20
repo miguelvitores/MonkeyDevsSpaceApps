@@ -22,7 +22,7 @@ USE `monkeydevs` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `monkeydevs`.`Hilo` (
   `idHilo` INT NOT NULL AUTO_INCREMENT,
-  `titulo` VARCHAR(45) NOT NULL,
+  `titulo` VARCHAR(100) NOT NULL,
   `comunidad` VARCHAR(45) NOT NULL,
   `fechaCreacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fechaModificacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -47,6 +47,19 @@ CREATE TABLE IF NOT EXISTS `monkeydevs`.`Comentario` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+insert into hilo(titulo, comunidad) values("Cádiz arde", "Andalucía");
+insert into hilo(titulo, comunidad) values("Emergencia en Medina del Campo, se quema un pinar", "Castilla y León");
+insert into hilo(titulo, comunidad) values("Fuego en Zaragoza, se necesitan voluntarios para apagarlo", "Aragón");
+
+insert into comentario(texto, Hilo_idHilo) values("¿Dónde es el fuego?", 1);
+insert into comentario(texto, Hilo_idHilo) values("¿Lo saben ya los bomberos?", 1);
+insert into comentario(texto, Hilo_idHilo) values("El fuego está cerca de mi casa", 1);
+insert into comentario(texto, Hilo_idHilo) values("¿Dónde es el fuego?", 2);
+insert into comentario(texto, Hilo_idHilo) values("¿Lo saben ya los bomberos?", 2);
+insert into comentario(texto, Hilo_idHilo) values("El fuego está cerca de mi casa", 2);
+insert into comentario(texto, Hilo_idHilo) values("¿Dónde es el fuego?", 3);
+insert into comentario(texto, Hilo_idHilo) values("¿Lo saben ya los bomberos?", 3);
+insert into comentario(texto, Hilo_idHilo) values("El fuego está cerca de mi casa", 3);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
