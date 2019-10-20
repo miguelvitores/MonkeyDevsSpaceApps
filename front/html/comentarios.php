@@ -63,13 +63,13 @@
           <form class="input_comentario" method="post">
             <textarea placeholder="Introduce el texto. max 450 caracteres" name="comentarioIntroducido" style="resize: none;" maxlength="250"></textarea>
             <br>
-            <input type="submit" value="Enviar">
+            <input id="comentar-comentario" type="submit" value="Comentar">
           </form>
             
         </div>
 
 
-        <a href="../html/index.html"><img src="../imagenes/atras.png" width="60"/></a>
+        <a href="hilos.php"><img src="../imagenes/atras.png" width="60"/></a>
 
 
     </div>
@@ -78,7 +78,7 @@
 <?php
 
     }else if( $_SERVER['REQUEST_METHOD']=='POST') {
-        if(isset($_POST['comentarioIntroducido'])){
+        if(isset($_POST['comentarioIntroducido']) && $_POST['comentarioIntroducido']!=""){
             $sql_insertar = 'INSERT INTO comentario(texto, Hilo_idHilo) VALUES(?,?)';
             $sentencia_insertar = $mdb->prepare($sql_insertar);
             $sentencia_insertar->execute(array($_POST['comentarioIntroducido'], $id));

@@ -63,13 +63,10 @@
 
       </div>
 
-      <div class="mapa_global">
-
-        <a target="_blank" href="https://firms.modaps.eosdis.nasa.gov/map/#z:3;c:0.0,0.0;d:2019-10-18..2019-10-19">Mapa Global</a>
-
-      </div class="comentarios">
-
-      <a target="_blank" href="comentarios.php"><input type="button" value="comentarios"></a>
+        
+      <a target="_blank" href="hilos.php">
+          <div id="foro-link">Foro</div>
+        </a>
 
 
     </div>
@@ -91,7 +88,6 @@
 
   </div>
 
-  </div>
   <div class="footer">
     <p class="copyright"> Open source copyright </p>
   </div>

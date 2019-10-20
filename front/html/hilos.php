@@ -37,7 +37,7 @@
 
         <div class="comentarios">
             <br>
-        <div class="tituloHilosComentarios">Hilos</div>
+        <div class="tituloHilosComentarios">Foro de MonkeyDevs</div>
           <div class= "comentarios_container">
                 <?php foreach($hilos as $h):   ?>
               
@@ -58,7 +58,7 @@
         </div>
 
 
-        <a href="../html/index.html"><img src="../imagenes/atras.png" width="60"/></a>
+        <a href="index.php"><img src="../imagenes/atras.png" width="60"/></a>
 
 
     </div>
