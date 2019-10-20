@@ -6,7 +6,7 @@ var clon = 0;
 var clat = 0;
 var ww = screen.width;
 var hh = screen.height -200;
-var coords = [];
+var coords;
 
 let data = [];
 let fires = [];
@@ -33,9 +33,16 @@ class Fire {
        stroke(0);
        strokeWeight(0.8);
        noFill();
-       ellipse(this.longitud, this.latitud);
+       ellipse(this.longitude, this.latitude);
   }
 }
+class Coordenates{
+  constructor(lat, long){
+    this.latitude = lat;
+    this.longitude = long;
+  }
+}
+
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -43,19 +50,20 @@ function getLocation() {
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
+
 function showPosition(position) {
   console.log(position.coords.latitude);
   console.log(position.coords.longitude);
+
 }
 
 
 
-
 // Options for map
-const options = {
-
+getLocation();
+var options = {
   lat:30,
-  lng:  0,
+  lng: 0,
   zoom: 4,
   studio: true, // false to use non studio styles
   //style: 'mapbox.dark' //streets, outdoors, light, dark, satellite (for nonstudio)
@@ -63,7 +71,6 @@ const options = {
   style: 'mapbox://styles/mapbox/satellite-v9',
 
 };
-getLocation();
 
 const mappa = new Mappa('Mapbox', key);
 let myMap;
