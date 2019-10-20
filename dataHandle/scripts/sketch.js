@@ -3,10 +3,8 @@ var mapimg;
 var zoom = 1;
 var clon = 0;
 var clat = 0;
-//var ww = 1024;
-var ww = 1920;
-//var hh = 512;
-var hh = 1080;
+var ww = screen.width;
+var hh = screen.height -200;
 
 let data = [];
 let fires = [];
@@ -92,6 +90,22 @@ class Fire {
 
 }
 
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+function showPosition(position) {
+  console.log(position.coords.latitude);
+  console.log(position.coords.longitude);
+}
+
+
+
+
 // Options for map
 const options = {
   lat: 30.846218,
@@ -101,6 +115,8 @@ const options = {
   //style: 'mapbox.dark' //streets, outdoors, light, dark, satellite (for nonstudio)
   style: 'mapbox://styles/gza1/ck1xekbhg0jvy1cp1a3gtlhm7',
 };
+getLocation();
+
 var mappa = new Mappa('Mapbox', key);
 let myMap;
 

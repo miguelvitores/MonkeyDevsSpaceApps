@@ -10,8 +10,52 @@ var coords = [];
 
 let data = [];
 let fires = [];
+var maxBright = 0;
+var minBright = 1000;
 
-const key = 'pk.eyJ1IjoiZ3phMSIsImEiOiJjazF2eHIzNGcwODloM2xwMDY2ZWVqM3B1In0.wqodM5D8x7BiwFVUQxvdig'
+const key = 'pk.eyJ1IjoiZ3phMSIsImEiOiJjazF2eHIzNGcwODloM2xwMDY2ZWVqM3B1In0.wqodM5D8x7BiwFVUQxvdig';
+
+$( function() {
+    
+    
+    $( "#slider" ).slider({
+        value: 292
+    });
+    $( "#slider" ).slider( "option", "min", 232 );
+    $( "#slider" ).slider( "option", "max", 292 );
+    slidermin = $( "#slider" ).slider( "option", "min");
+    slidermax = $( "#slider" ).slider( "option", "max");
+    $( "#slider" ).slider( "option", "step", 1 );
+    slidervalue = $( "#slider" ).slider( "value" );
+    console.log("slidervalue: "+slidervalue);
+    
+    $( "#slider" ).on("slidechange", function(){
+        slidervalue = $( "#slider" ).slider( "value" );
+        console.log(slidervalue);
+        
+        loadData();
+        clear();
+//        myMap = mappa.tileMap(options);
+//        myMap.overlay(canvas);
+
+        myMap.onChange(drawFires);
+//        console.log(fires.length); 
+    });
+    
+    
+} );
+
+
+//$( function() {
+//    
+////    $( "#slider" ).slider( "option", "min", 232 );
+////    $( "#slider" ).slider( "option", "max", 292 );
+////    $( "#slider" ).slider( "option", "step", 1 );
+//    
+////    $( "#slider" ).onchange = function(){
+////        console.log($( "#slider" ).slider( "value" ));
+////    }
+//} );
 
 class Fire {
   constructor(latitude, longitude, brightTi4, scan, track, acqDate, acqTime, satellite, confidence, version, brigthTi5, frp, daynight) {
@@ -71,14 +115,21 @@ let myMap;
 let canvas;
 
 function preload(){
-
-  data = loadStrings('../MapStuff/VIIRS_I_Europe_VNP14IMGTDL_NRT_2019232.txt');
-
+    console.log("slidermin: "+slidermin);
+    console.log("slidermax: "+slidermax);
+    for(let i=slidermin; i<=slidermax; i++){
+        data[i] = [];
+//        data[i] = loadStrings('data/FIRMS/viirs/Global/VIIRS_I_Global_VNP14IMGTDL_NRT_2019'+i+'.txt');
+//        data[i] = loadStrings('data/FIRMS/viirs/Europe/VIIRS_I_Europe_VNP14IMGTDL_NRT_2019'+i+'.txt');
+//        data[i] = loadStrings('data/FIRMS/c6/Europe/MODIS_C6_Europe_MCD14DL_NRT_2019'+i+'.txt');
+        data[i] = loadStrings('../MapStuff/data/FIRMS/c6/Global/MODIS_C6_Global_MCD14DL_NRT_2019'+i+'.txt');
+//        console.log(data[i]);
+    }
 }
 function setup(){
 
   loadData();
-  console.log(fires);
+//  console.log(fires);
   canvas = createCanvas(ww, hh);
 
 
@@ -90,8 +141,6 @@ function setup(){
 
 
   myMap.onChange(drawFires);
-  fill(255, 0, 0);
-  stroke(255,0,0);
 
 }
 function draw(){
@@ -106,18 +155,22 @@ function drawFires(){
 
 
   //if (myMap.map.getBounds().contains([latitudeX, longitudeX])) {
-    for(let i = 0; i < fires.length-1; i++){
-
-
-
+    for(let i = 0; i<fires.length; i++){
       const latitudeX = Number(fires[i].latitude);
       const longitudeX = Number(fires[i].longitude);
-
+        const brightness = Number(fires[i].brightTi4);
 
       if (myMap.map.getBounds().contains([latitudeX, longitudeX])) {
         const pos = myMap.latLngToPixel(latitudeX, longitudeX);
-        ellipse(pos.x, pos.y, 3, 3);
-
+          let coefBrillo = ((maxBright-minBright) * brightness) / (minBright/maxBright);
+          let brillo = abs( log( pow(coefBrillo, exp(1)) ) );
+          let coefVerde = (brightness-minBright) / (maxBright-minBright);            
+//          console.log(coefVerde);
+        fill(255, 255*coefVerde, 0, brillo);
+        stroke(255, 255*coefVerde,0, brillo);
+          let coefZoom = pow(exp( - myMap.getZoom()/3 ), -1);
+        ellipse(pos.x, pos.y, coefZoom, coefZoom);
+        
       }
     }
 
@@ -126,25 +179,34 @@ function drawFires(){
 }
 
 function loadData() {
+    fires = [];
+    console.log("slidervalue");
+    console.log(slidervalue);
+    maxBright = 0;
+    minBright = 1000;
+    for(let i = 1; i < data[slidervalue].length-1; i++) {
+        let line = split(data[slidervalue][i], ",");
 
-      for(let i = 1; i < data.length; i++) {
-          let line = split(data[i], ",");
+        let latitude = line[0];
+        let longitude = line[1];
+        let brightTi4 = line[2];
+        let scan = line[3];
+        let track = line[4];
+        let acqDate = line[5];
+        let acqTime = line[6];
+        let satellite = line[7];
+        let confidence = line[8];
+        let version = line[9];
+        let brigthTi5 = line[10];
+        let frp = line[11];
+        let daynight = line[12];
+        
+        maxBright = max(maxBright, brightTi4);
+        minBright = min(minBright, brightTi4);
 
-          let latitude = line[0];
-          let longitude = line[1];
-          let brightTi4 = line[2];
-          let scan = line[3];
-          let track = line[4];
-          let acqDate = line[5];
-          let acqTime = line[6];
-          let satellite = line[7];
-          let confidence = line[8];
-          let version = line[9];
-          let brigthTi5 = line[10];
-          let frp = line[11];
-          let daynight = line[12];
+        
 
           fires.push(new Fire(latitude, longitude, brightTi4, scan, track, acqDate, acqDate, acqTime, satellite, confidence, version, brigthTi5, frp, daynight));
       }
-
+  
 }

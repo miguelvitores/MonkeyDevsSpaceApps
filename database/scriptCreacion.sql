@@ -36,6 +36,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `monkeydevs`.`Comentario` (
   `idComentario` INT NOT NULL AUTO_INCREMENT,
   `texto` VARCHAR(450) NOT NULL,
+  `fechaCreacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Hilo_idHilo` INT NOT NULL,
   PRIMARY KEY (`idComentario`, `Hilo_idHilo`),
   INDEX `fk_Comentario_Hilo_idx` (`Hilo_idHilo` ASC) VISIBLE,

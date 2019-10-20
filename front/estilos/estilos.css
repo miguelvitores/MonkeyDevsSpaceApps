@@ -258,6 +258,7 @@ li {
   background-clip: padding-box;
   border: solid 3px transparent;
   border-radius: 1em;
+transition: background-color 3s ease-out, color 3s ease-out;
 }
 .gradient-box:before {
   content: '';
@@ -280,4 +281,38 @@ li {
 .comentarios p{
   padding: 15px;
 
+}
+
+.comentarios a{
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.gradient-box:hover{
+    background-color:  #d68b91;
+    color: white;
+}
+
+#titulo-hilo{
+    font-weight: bold;
+}
+
+#comunidad-hilo{
+    font-size: 80%;
+    color: gray;
+    font-weight: 500;
+}
+
+#fecha-hilo{
+    font-size: 80%;
+    color: #acbae5;
+    font-weight: 400;
+}
+.tituloHilosComentarios{
+    text-align: center;
+    color: #A70026;
+    font-size: 40px;
+    font-weight: bold;
 }
