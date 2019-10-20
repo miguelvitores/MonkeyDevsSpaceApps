@@ -82,7 +82,7 @@
         <li>Evitar inhalar el humo.</li>
         <li>Hacer caso a las autoridades.</li>
         <li>Ir en direccion contraria al viento.</li>
-        <li><a target="_blank" href="mas_consejos.php">Para mas informacion pincha aqui</a></li>
+        <li><a href="mas_consejos.php">Para mas informacion pincha aqui</a></li>
       </ol>
     </span>
 

@@ -154,10 +154,10 @@ function preload(){
     console.log("slidermax: "+slidermax);
     for(let i=slidermin; i<=slidermax; i++){
         data[i] = [];
-        data[i] = loadStrings('../MapStuff/data/FIRMS/viirs/Global/VIIRS_I_Global_VNP14IMGTDL_NRT_2019'+i+'.txt');
+//        data[i] = loadStrings('../MapStuff/data/FIRMS/viirs/Global/VIIRS_I_Global_VNP14IMGTDL_NRT_2019'+i+'.txt');
 //        data[i] = loadStrings('../MapStuff/data/FIRMS/viirs/Europe/VIIRS_I_Europe_VNP14IMGTDL_NRT_2019'+i+'.txt');
 //        data[i] = loadStrings('../MapStuff/data/FIRMS/c6/Europe/MODIS_C6_Europe_MCD14DL_NRT_2019'+i+'.txt');
-//        data[i] = loadStrings('../MapStuff/data/FIRMS/c6/Global/MODIS_C6_Global_MCD14DL_NRT_2019'+i+'.txt');
+        data[i] = loadStrings('../MapStuff/data/FIRMS/c6/Global/MODIS_C6_Global_MCD14DL_NRT_2019'+i+'.txt');
 //        console.log(data[i]);
     }
 }

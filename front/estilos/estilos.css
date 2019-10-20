@@ -358,3 +358,9 @@ transition: background-color 3s ease-out, color 3s ease-out;
     border: 2px solid #595900;
     background-color: #c1c401;
 }
+li{
+    display: block;
+}
+li a:visited{
+    color: yellow;
+}

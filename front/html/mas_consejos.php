@@ -38,7 +38,7 @@
             <li>Llamad inmediatamente al teléfono de emergencias 112 y a la Policía Municipal 092. La rapidez en que los aviséis puede ser determinante</li>
         </ol>
 
-        <a href="../html/index.html"><img src="../imagenes/atras.png" width="60"/></a>
+        <a href="index.php"><img src="../imagenes/atras.png" width="60"/></a>
 
 
     </div>
