@@ -95,18 +95,48 @@ function showPosition(position) {
 
 
 
-// Options for map
-const options = {
 
-  lat:30,
-  lng:  0,
-  zoom: 4,
-  studio: true, // false to use non studio styles
-  //style: 'mapbox.dark' //streets, outdoors, light, dark, satellite (for nonstudio)
-  //style: 'mapbox://styles/gza1/ck1xekbhg0jvy1cp1a3gtlhm7',
-  style: 'mapbox://styles/mapbox/satellite-v9',
+var opts;
 
-};
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError );
+  } else {
+    
+    
+  
+  }
+}
+function showError(error){
+
+  // Options for map
+  options = {
+
+    lat: 30,
+    lng:  0,
+    zoom: 3,
+    studio: true, // false to use non studio styles
+    //style: 'mapbox.dark' //streets, outdoors, light, dark, satellite (for nonstudio)
+    //style: 'mapbox://styles/gza1/ck1xekbhg0jvy1cp1a3gtlhm7',
+    style: 'mapbox://styles/mapbox/satellite-v9',
+
+  };
+}
+
+function showPosition(position) {
+  options = {
+
+    lat: position.coords.latitude,
+    lng:  position.coords.longitude,
+    zoom: 8,
+    studio: true, // false to use non studio styles
+    //style: 'mapbox.dark' //streets, outdoors, light, dark, satellite (for nonstudio)
+    //style: 'mapbox://styles/gza1/ck1xekbhg0jvy1cp1a3gtlhm7',
+    style: 'mapbox://styles/mapbox/satellite-v9',
+
+  };
+}
+
 getLocation();
 
 const mappa = new Mappa('Mapbox', key);
